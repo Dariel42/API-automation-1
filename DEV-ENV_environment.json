@@ -1,0 +1,16 @@
+{
+	"id": "838ae85c-ac43-418d-aa88-4c3334408b87",
+	"name": "DEV-ENV",
+	"values": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": 0,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-07-06T21:20:33.541Z",
+	"_postman_exported_using": "Postman/12.18.0"
+}

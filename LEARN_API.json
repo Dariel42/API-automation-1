@@ -1,0 +1,274 @@
+{
+  "info": {
+    "_postman_id": "909334a0-96df-4e7e-86ee-5025f2105f2d",
+    "name": "LEARN_API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30179563"
+  },
+  "item": [
+    {
+      "name": "Get List User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Get List User is Success thenStatus code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const data = pm.response.json();",
+              "console.log('>> data', data.length) // length adalah jumlah item",
+              "",
+              "if (data.length === 0) {",
+              "    // Filter Not Found item(s)",
+              "    pm.test('Filter: Not Found', () => {",
+              "        pm.expect(data.length).to.equal(0); // jika sama sama 0 atau kosong = true",
+              "    })",
+              "} else if (data.length === 1) {",
+              "    // Filter 1 item",
+              "    pm.test('Filter: 1 item', () => {",
+              "        pm.expect(data.length).to.equal(1); // Jika sama sama 1 = true",
+              "    })",
+              "} else if (data.length > 1) {",
+              "    // Filter Multiple Items",
+              "    pm.test('Filter: Multiple Items', () => {",
+              "        pm.expect(data.length).to.greaterThan(1); // Jika Jumlah item lebih dari 1 = true",
+              "    })",
+              "} else {",
+              "    console.log('not handle ...')",
+              "}",
+              "",
+              "pm.test('List Users is an array[]', () => {",
+              "    pm.expect(data).to.be.an('array'); // Jika data adalah array = true",
+              "})",
+              "",
+              "pm.test('List Users has Required id, username, email', () => {",
+              "    const listUsers = data[0]",
+              "",
+              "    pm.expect(listUsers.id).to.be.a('number'); // Jika data memiliki property id = true dan validasi type data",
+              "    pm.expect(listUsers.username).to.be.a('string').not.be.empty; // Jika data memiliki property username = true dan validasi type data",
+              "    pm.expect(listUsers.email).to.be.a('string').not.be.empty; // Jika data memiliki property email = true dan validasi type data",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/users",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "users"
+          ],
+          "query": [
+            {
+              "key": "username",
+              "value": "Bret",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/posts",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Details Post ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "const data = pm.response.json(); // Mengubah response menjadi json",
+              "",
+              "pm.test('Details Post ID is an objec{}', ()=>{",
+              "    pm.expect(data).to.be.an('object'); // Jika data adalah array = true",
+              "})"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/posts/:id",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "posts",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get List Comment Post ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/comments?email=Jayne_Kuhic@sydney.com",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "comments"
+          ],
+          "query": [
+            {
+              "key": "postId",
+              "value": "1",
+              "disabled": true
+            },
+            {
+              "key": "email",
+              "value": "Jayne_Kuhic@sydney.com"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get List Todos",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/todos",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "todos"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
