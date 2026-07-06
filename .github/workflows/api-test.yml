@@ -1,0 +1,33 @@
+name: Automated API Tests
+
+# Pipeline ini akan berjalan otomatis setiap kali ada kode yang di-push ke branch 'main'
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  postman-api-testing:
+    runs-on: ubuntu-latest # Menggunakan server Ubuntu milik GitHub
+
+    steps:
+      # Langkah 1: Mengambil file (checkout) dari repository-mu agar bisa dibaca server
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Langkah 2: Memasang Node.js (Syarat wajib untuk Newman)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Langkah 3: Menginstal Newman
+      - name: Install Newman
+        run: npm install -g newman
+
+      # Langkah 4: Menjalankan Test API (Ganti nama file sesuai milikmu)
+      - name: API-automation-1
+        run: newman run LEARN_API.json -e DEV-ENV_environment.json
