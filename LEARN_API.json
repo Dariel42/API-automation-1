@@ -59,8 +59,12 @@
         {
           "listen": "prerequest",
           "script": {
-            "exec": [],
-            "type": "text/javascript"
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
           }
         }
       ],
@@ -68,9 +72,12 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/users",
+          "raw": "https://jsonplaceholder.typicode.com/users",
+          "protocol": "https",
           "host": [
-            "{{baseURL}}"
+            "jsonplaceholder",
+            "typicode",
+            "com"
           ],
           "path": [
             "users"
@@ -114,9 +121,12 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/posts",
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
           "host": [
-            "{{baseURL}}"
+            "jsonplaceholder",
+            "typicode",
+            "com"
           ],
           "path": [
             "posts"
@@ -163,9 +173,12 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/posts/:id",
+          "raw": "https://jsonplaceholder.typicode.com/posts/:id",
+          "protocol": "https",
           "host": [
-            "{{baseURL}}"
+            "jsonplaceholder",
+            "typicode",
+            "com"
           ],
           "path": [
             "posts",
@@ -209,9 +222,12 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/comments?email=Jayne_Kuhic@sydney.com",
+          "raw": "https://jsonplaceholder.typicode.com/comments?email=Jayne_Kuhic@sydney.com",
+          "protocol": "https",
           "host": [
-            "{{baseURL}}"
+            "jsonplaceholder",
+            "typicode",
+            "com"
           ],
           "path": [
             "comments"
@@ -259,9 +275,12 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseURL}}/todos",
+          "raw": "https://jsonplaceholder.typicode.com/todos",
+          "protocol": "https",
           "host": [
-            "{{baseURL}}"
+            "jsonplaceholder",
+            "typicode",
+            "com"
           ],
           "path": [
             "todos"

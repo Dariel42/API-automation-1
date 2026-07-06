@@ -30,4 +30,4 @@ jobs:
 
       # Langkah 4: Menjalankan Test API (Ganti nama file sesuai milikmu)
       - name: API-automation-1
-        run: newman run LEARN_API.json -e DEV-ENV_environment.json
+        run: newman run LEARN_API.json
